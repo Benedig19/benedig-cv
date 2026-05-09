@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Certificados</title>
+
+<style>
+body{
+    background:linear-gradient(135deg,#0f172a,#020617);
+    color:white;
+    font-family:'Poppins',sans-serif;
+}
+
+/* TITULO */
+h1{
+    text-align:center;
+    margin:30px 0;
+}
+
+/* GRID */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* CARD */
+.card{
+    background:#1e293b;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(99,102,241,0.4);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* IMG GRANDE */
+.modal img{
+    max-width:85%;
+    max-height:80%;
+    border-radius:15px;
+    cursor:grab;
+    transition:transform 0.2s;
+}
+
+/* BOTONES */
+.controls{
+    position:absolute;
+    top:50%;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.btn{
+    font-size:40px;
+    cursor:pointer;
+    user-select:none;
+}
+
+/* CERRAR */
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:35px;
+    cursor:pointer;
+}
+
+/* CONTADOR */
+.counter{
+    position:absolute;
+    bottom:20px;
+    font-size:18px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📜 Certificaciones</h1>
+
+<div class="gallery" id="gallery"></div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+<span class="close" onclick="closeModal()">✖</span>
+
+<div class="controls">
+<span class="btn" onclick="prev()">⬅</span>
+<span class="btn" onclick="next()">➡</span>
+</div>
+
+<img id="modalImg">
+
+<div class="counter" id="counter"></div>
+</div>
+
+<script>
+// LISTA DE IMAGENES
+const images = [
+"Certi1.jpeg","Certi2.png","Certi3.png","Certi4.png","Certi5.png",
+"Certi6.png","Certi7.png","Certi8.png","Certi9.png","Certi10.png",
+"Certi11.png","Certi12.png","Certi13.png","Certi14.png","Certi15.png",
+"Certi16.png","Certi17.png","Certi18.png","Certi19.png","Certi20.png",
+"Certi21.png","Certi22.png"
+];
+
+let current = 0;
+let scale = 1;
+let isDragging = false;
+let startX, startY, translateX = 0, translateY = 0;
+
+// GENERAR GALERIA
+const gallery = document.getElementById("gallery");
+images.forEach((src,i)=>{
+    let div = document.createElement("div");
+    div.className="card";
+    div.innerHTML=`<img src="${src}" onclick="openModal(${i})">`;
+    gallery.appendChild(div);
+});
+
+// ABRIR
+function openModal(index){
+    current=index;
+    document.getElementById("modal").style.display="flex";
+    updateImage();
+}
+
+// CERRAR
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+    resetZoom();
+}
+
+// ACTUALIZAR IMG
+function updateImage(){
+    const img = document.getElementById("modalImg");
+    img.src = images[current];
+    document.getElementById("counter").innerText = (current+1)+" / "+images.length;
+    resetZoom();
+}
+
+// SIGUIENTE
+function next(){
+    current = (current+1)%images.length;
+    updateImage();
+}
+
+// ANTERIOR
+function prev(){
+    current = (current-1+images.length)%images.length;
+    updateImage();
+}
+
+// ZOOM CON RUEDA
+const modalImg = document.getElementById("modalImg");
+
+modalImg.addEventListener("wheel",(e)=>{
+    e.preventDefault();
+    scale += e.deltaY * -0.001;
+    scale = Math.min(Math.max(.5, scale), 3);
+    modalImg.style.transform = `scale(${scale}) translate(${translateX}px,${translateY}px)`;
+});
+
+// DRAG
+modalImg.addEventListener("mousedown",(e)=>{
+    isDragging=true;
+    startX=e.clientX;
+    startY=e.clientY;
+    modalImg.style.cursor="grabbing";
+});
+
+window.addEventListener("mouseup",()=>{
+    isDragging=false;
+    modalImg.style.cursor="grab";
+});
+
+window.addEventListener("mousemove",(e)=>{
+    if(!isDragging) return;
+    translateX += (e.clientX-startX)/scale;
+    translateY += (e.clientY-startY)/scale;
+    startX=e.clientX;
+    startY=e.clientY;
+    modalImg.style.transform = `scale(${scale}) translate(${translateX}px,${translateY}px)`;
+});
+
+// TECLADO
+document.addEventListener("keydown",(e)=>{
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft") prev();
+    if(e.key==="Escape") closeModal();
+});
+
+// RESET
+function resetZoom(){
+    scale=1;
+    translateX=0;
+    translateY=0;
+    modalImg.style.transform="scale(1)";
+}
+</script>
+
+</body>
+</html>

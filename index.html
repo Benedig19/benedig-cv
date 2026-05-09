@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Benedig Raul</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#020617);
+    color:#e5e7eb;
+    line-height:1.6;
+}
+
+/* CONTENEDOR */
+.container{
+    display:flex;
+    max-width:1200px;
+    margin:auto;
+    gap:20px;
+    padding:20px;
+}
+
+/* SIDEBAR PRO */
+.sidebar{
+    width:30%;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:25px;
+    text-align:center;
+    border-radius:20px;
+    height:fit-content;
+    position:sticky;
+    top:20px;
+    transition:0.4s;
+}
+
+.sidebar:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(99,102,241,0.2);
+}
+
+/* FOTO */
+.sidebar img{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    border:4px solid #6366f1;
+    margin-bottom:20px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.sidebar img:hover{
+    transform:scale(1.1) rotate(3deg);
+}
+
+/* TEXTO */
+.sidebar h2{
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.sidebar p{
+    font-size:14px;
+    margin-bottom:6px;
+    opacity:0.85;
+}
+
+/* LINKS */
+.sidebar .links a{
+    display:block;
+    margin-top:12px;
+    padding:8px;
+    border-radius:10px;
+    background:#1e293b;
+    color:#6366f1;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.sidebar .links a:hover{
+    background:#6366f1;
+    color:white;
+    transform:scale(1.05);
+}
+
+/* CONTENIDO */
+.content{
+    width:70%;
+    padding:10px;
+}
+
+/* SECCIONES */
+.section{
+    margin-bottom:35px;
+    padding:20px;
+    background:rgba(255,255,255,0.03);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(99,102,241,0.15);
+}
+
+.section h2{
+    border-left:5px solid #6366f1;
+    padding-left:12px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+/* EXPERIENCIA CARDS */
+.job{
+    margin-bottom:20px;
+    background:linear-gradient(145deg,#1e293b,#0f172a);
+    padding:18px;
+    border-radius:15px;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.job:hover{
+    transform:translateX(8px) scale(1.02);
+    box-shadow:0 0 25px rgba(99,102,241,0.3);
+}
+
+.job h3{
+    color:#6366f1;
+    margin-bottom:5px;
+}
+
+.meta{
+    font-size:13px;
+    opacity:0.7;
+    margin-bottom:10px;
+}
+
+/* LISTAS */
+ul{
+    margin-left:20px;
+}
+
+ul li{
+    margin-bottom:5px;
+}
+
+/* SUBTITULOS */
+.subtitulo{
+    font-weight:600;
+    margin-top:10px;
+    color:#c7d2fe;
+}
+
+/* BLOQUES */
+.block{
+    margin-bottom:15px;
+}
+.section, .job{
+    page-break-inside: avoid;
+}
+
+/* ANIMACION SCROLL */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+    }
+    .sidebar, .content{
+        width:100%;
+    }
+}
+.btn-pdf{
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+/* ===== MODO PDF PROFESIONAL ===== */
+.pdf-mode{
+    background:white !important;
+    color:black !important;
+}
+
+.pdf-mode .sidebar,
+.pdf-mode .section,
+.pdf-mode .job{
+    background:white !important;
+    color:black !important;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+}
+
+/* ocultar cosas innecesarias en PDF */
+.pdf-mode .links,
+.pdf-mode .btn-pdf{
+    display:none !important;
+}
+</style>
+</head>
+
+<body>
+    
+<div id="pdf-header" style="display:none;">
+    <div style="width:100%; border-bottom:2px solid #000; padding-bottom:5px;">
+        <h2 style="margin:0;">Benedig Raul Huillcahuaman</h2>
+        <p style="margin:0; font-size:12px;">
+            Soporte Técnico | Desarrollo Web | IA | 📧 benedigraulh@gmail.com
+        </p>
+    </div>
+</div>
+<div class="container">
+
+<!-- IZQUIERDA -->
+<div class="sidebar">
+    <img src="Carnet.png" alt="foto">
+
+    <h2>Benedig Raul</h2>
+
+    <p>📧 benedigraulh@gmail.com</p>
+    <p>📱 900885129</p>
+    <p>📱 918461254</p>
+    <p>DNI: 76053774</p>
+    <p>Cusco - Perú</p>
+
+    <div class="links">
+        <a href="certificados.html">Ver Certificados</a>
+        <a href="https://github.com/Benedig19" target="_blank">GitHub</a>
+        <a href="https://gitlab.com/Benedig4" target="_blank">GitLab</a>
+        <button onclick="generarPDF()" class="btn-pdf">
+📄 Descargar CV
+</button>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+async function generarPDF(){
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p','mm','a4');
+
+    const content = document.querySelector(".container");
+
+    // modo limpio
+    document.body.classList.add("pdf-mode");
+
+    await new Promise(r => setTimeout(r, 500));
+
+    const canvas = await html2canvas(content, { scale: 2 });
+    const imgData = canvas.toDataURL('image/png');
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    const imgWidth = pageWidth;
+    const imgHeight = canvas.height * imgWidth / canvas.width;
+
+    let position = 0;
+    let page = 1;
+
+    while(position < imgHeight){
+
+        if(page > 1) pdf.addPage();
+
+        // HEADER EN CADA HOJA
+        pdf.setFontSize(12);
+        pdf.text("Benedig Raul Huillcahuaman", 10, 10);
+        pdf.setFontSize(9);
+        pdf.text("Soporte TI | Desarrollo Web | IA", 10, 15);
+
+        // contenido
+        pdf.addImage(
+            imgData,
+            'PNG',
+            0,
+            20 - position,
+            imgWidth,
+            imgHeight
+        );
+
+        position += pageHeight - 20;
+        page++;
+    }
+
+    pdf.save("CV_Benedig_Raul.pdf");
+
+    document.body.classList.remove("pdf-mode");
+}
+</script>
+<!-- DERECHA -->
+<div class="content">
+
+<!-- PERFIL -->
+<div class="section hidden">
+<h2>Perfil Profesional</h2>
+<p>
+Técnico en Ingeniería de Software con Inteligencia Artificial, egresado de SENATI, con 
+sólida experiencia en soporte técnico integral, administración de sistemas y desarrollo 
+backend. Destacado por su ética, responsabilidad y creatividad, con capacidad demos
+trada de liderazgo, resolución de problemas y adaptación al cambio. Orientado a 
+resultados y al cumplimiento de metas institucionales, con un enfoque proactivo en la 
+mejora continua y la optimización de procesos tecnológicos.
+</p>
+</div>
+<div class="section hidden">
+<h2>Experiencia de Trabajo</h2>
+
+<!-- BACKUS -->
+<div class="job">
+<h3>Soporte Técnico / Sistemas TI</h3>
+<p class="meta"><b>Backus (AB InBev) – Planta Cusco</b> | 23/02/2026 – 31/03/2026</p>
+
+<p>
+Brindé soporte técnico integral en entorno corporativo, asumiendo temporalmente funciones del área de sistemas, garantizando la continuidad operativa de los servicios TI en planta y usuarios finales.
+</p>
+
+<p class="subtitulo">Funciones principales:</p>
+<ul>
+<li>Soporte técnico presencial y remoto a usuarios en planta y sedes.</li>
+<li>Diagnóstico y solución de incidencias en laptops, PCs y dispositivos corporativos.</li>
+<li>Gestión y seguimiento de tickets TI a nivel nacional.</li>
+<li>Configuración, instalación y mantenimiento de equipos tecnológicos.</li>
+<li>Enrolamiento y configuración de dispositivos corporativos.</li>
+<li>Administración de cuentas y soporte en herramientas corporativas.</li>
+<li>Soporte funcional en SAP (accesos e incidencias básicas).</li>
+<li>Coordinación con áreas TI para resolución de incidencias críticas.</li>
+<li>Apoyo en la gestión operativa del área de sistemas.</li>
+</ul>
+</div>
+
+<!-- BICENTENARIO -->
+<div class="job">
+<h3>Soporte Técnico / Ingeniero de Sistemas</h3>
+<p class="meta"><b>Proyecto Colegios Bicentenario – Gamarra, Anta, Izcuchaca</b> | 14/11/2025 – 31/12/2025</p>
+<p><b>Empresa:</b> Logisticals S.A.</p>
+
+<p>
+Participé en la implementación tecnológica del proyecto educativo, brindando soporte integral en infraestructura TI y despliegue de equipos.
+</p>
+
+<p class="subtitulo">Funciones principales:</p>
+<ul>
+<li>Instalación y configuración de laptops, impresoras y equipos de red.</li>
+<li>Organización e instalación de racks de comunicaciones.</li>
+<li>Distribución y entrega de equipos tecnológicos.</li>
+<li>Control e inventario de activos del área de calidad y SSOMA.</li>
+<li>Reporte de inventarios y documentación técnica.</li>
+<li>Soporte técnico preventivo y correctivo.</li>
+</ul>
+</div>
+
+<!-- HITSS -->
+<div class="job">
+<h3>Soporte Técnico – Mesa de Ayuda</h3>
+<p class="meta"><b>AMX - La Positiva Seguros Global (HITSS)</b> | 27/08/2025 – 31/10/2025</p>
+
+<p>
+Soporte técnico especializado en enrolamiento, configuración y administración de dispositivos móviles corporativos.
+</p>
+
+<ul>
+<li>Configuración de dispositivos Android e iPhone.</li>
+<li>Transferencia, respaldo y mantenimiento de información.</li>
+<li>Soporte remoto y presencial a usuarios internos.</li>
+<li>Coordinación con el área de sistemas para optimización de procesos.</li>
+</ul>
+</div>
+
+<!-- MUNICIPALIDAD -->
+<div class="job">
+<h3>Soporte Técnico</h3>
+<p class="meta"><b>Municipalidad de San Sebastián – Cusco</b> | Enero 2024 – Julio 2024</p>
+
+<ul>
+<li>Elaboración de inventario general de activos físicos.</li>
+<li>Publicación y mantenimiento de contenido en WordPress.</li>
+<li>Soporte técnico y mantenimiento de equipos de oficina.</li>
+</ul>
+</div>
+
+<!-- DEVINPERU -->
+<div class="job">
+<h3>Desarrollador Backend</h3>
+<p class="meta"><b>DEVINPERU – Cusco</b> | Agosto 2024 – Diciembre 2024</p>
+
+<ul>
+<li>Desarrollo de sistema de inventario con Django (Python).</li>
+<li>Gestión de versiones con GitLab en entornos colaborativos.</li>
+<li>Implementación de funcionalidades backend y pruebas.</li>
+<li>Análisis de requerimientos de software.</li>
+</ul>
+</div>
+
+<!-- TERRA -->
+<div class="job">
+<h3>Soporte Web / Gestión Digital</h3>
+<p class="meta"><b>Terra Quechua Perú – Cusco</b> | Enero 2025 – Junio 2025</p>
+
+<ul>
+<li>Mejora y mantenimiento del sitio web turístico.</li>
+<li>Gestión de contenido multimedia.</li>
+<li>Manejo de reservas online.</li>
+<li>Atención al cliente nacional e internacional.</li>
+<li>Coordinación con el área de ventas.</li>
+</ul>
+</div>
+
+</div>
+
+<!-- FORMACION -->
+<div class="section hidden">
+<h2>Formación Profesional</h2>
+<ul>
+<li><b>SENATI</b> - Técnico en Ingeniería de Software con Inteligencia Artificial – Instituto SENATI (Egresado)
+</li>
+<li> Educación Secundaria Completa – I.E. Mariano Santos, Urcos</li>
+<li> Educación Primaria Completa – I.E. 50476, Mollebamba
+</li>
+</ul>
+</div>
+<div class="section hidden">
+<h2>Competencias Técnicas</h2>
+
+<div class="block">
+<p class="subtitulo">Lenguajes de Programación</p>
+<p>Python (backend y automatización), JavaScript (DOM, eventos), TypeScript (Angular), Dart (Flutter).</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Desarrollo Web y Móvil</p>
+<p>Frontend: HTML5, CSS3, JavaScript, Bootstrap, Angular. Backend: Django (Python), Node.js (básico). Desarrollo móvil con Flutter. Integración de APIs REST.</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Bases de Datos</p>
+<p>MySQL, SQL Server, Oracle Database, Supabase (PostgreSQL en la nube).</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Análisis de Datos / BI</p>
+<p>Power BI (dashboards), Excel avanzado (tablas dinámicas, macros), Google Sheets. Procesamiento y limpieza de datos.</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Inteligencia Artificial / Ciencia de Datos</p>
+<p>Machine Learning (regresión, árboles de decisión, clustering). Uso de Pandas, NumPy y Scikit-learn.</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Ofimática y Productividad</p>
+<p>Microsoft Office avanzado (Word, Excel, PowerPoint, Outlook) y Google Workspace (Docs, Sheets, Slides, Drive).</p>
+</div>
+
+<div class="block">
+<p class="subtitulo">Soporte Técnico</p>
+<p>Mantenimiento de hardware, instalación de software, redes básicas (WiFi, cableado), soporte técnico presencial y remoto.</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('show');}
+});
+});
+document.querySelectorAll('.hidden').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
